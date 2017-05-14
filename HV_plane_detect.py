@@ -1,3 +1,19 @@
+# -*- coding: utf-8 -*-
+#
+# Copyright (c) 2017 All Rights Resevered
+#
+# Author: Jinay Patel (jinay1991@gmail.com)
+
+"""
+Horizontal and Vertical Surface detection (i.e. Floor/Wall Segmentation)
+
+usage: HV_plane_detect.py [-h] --input INPUT [--debug]
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --input INPUT  input file path
+  --debug        display intermediate outputs
+"""
 import cv2
 import numpy as np
 import os
@@ -297,7 +313,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", help="input file path",
-                        default="data/IMG_6857.JPG")
+                        default="data/IMG_6857.JPG", required=True)
     parser.add_argument("--debug", help="display intermediate outputs",
                         action="store_true", default=False)
     args = parser.parse_args()
@@ -305,6 +321,10 @@ if __name__ == "__main__":
     if args.debug:
         from matplotlib import pyplot as plt
         log.setLevel(logging.DEBUG)
+
+    if not os.path.exists(os.path.abspath(args.input)):
+        log.error("input file does not exist")
+        exit(1)
 
     segment = segmentation(filename=args.input)
 

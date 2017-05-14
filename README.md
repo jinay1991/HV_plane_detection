@@ -16,10 +16,12 @@ In order to run the particular Algo, following packages are required.
 
 # Usage
 
-    $ python HV_plane_detect.py input debug
+    $ python HV_plane_detect.py -h
+    usage: HV_plane_detect.py [-h] --input INPUT [--debug]
 
-    where, input - Input Image File name with Full path
-           debug - If set to non-zero, internally utilises matplotlib to display intermediate output for the Algorithm. 
-                   Useful for debugging purpose. Default is 0.
+    optional arguments:
+    -h, --help     show this help message and exit
+    --input INPUT  input file path
+    --debug        display intermediate outputs
 
 
