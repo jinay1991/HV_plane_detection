@@ -31,18 +31,18 @@ As this is built based on Python Public Class, it is much easier for user to int
 
 Follow below block of sample code in order to integrate this to Your Code.
 
-    ```Python
-    segment = segmentation(filename=args.input)
+```Python
+segment = segmentation(filename=args.input)
 
-    floor_pts, floor_mask = segment.floor_segmentation()
-    wall_pts, wall_mask = segment.wall_segmentation()
+floor_pts, floor_mask = segment.floor_segmentation()
+wall_pts, wall_mask = segment.wall_segmentation()
 
-    segment.dump_results() # store the result JPG
-    ```
+segment.dump_results() # store the result JPG
+```
 
 In order to print debug logs, please set log level to `logging.DEBUG`.
 
-    ```Python
+```Python
 
-    log.setLevel(logging.DEBUG)
-    ```
+log.setLevel(logging.DEBUG)
+```
