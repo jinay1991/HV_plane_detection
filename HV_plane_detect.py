@@ -113,6 +113,30 @@ class segmentation():
 
         return self.wall_pts, self.wall_mask
 
+    def color_quantisation(self):
+        
+        img = cv2.imread(self.filename)
+        Z = img.reshape((-1,3))
+        
+        # convert to np.float32
+        Z = np.float32(Z)
+        
+        # define criteria, number of clusters(K) and apply kmeans()
+        criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
+        K = 8
+        ret,label,center=cv2.kmeans(Z,K,None,criteria,10,cv2.KMEANS_RANDOM_CENTERS)
+        
+        # Now convert back into uint8, and make original image
+        center = np.uint8(center)
+        res = center[label.flatten()]
+        res2 = res.reshape((img.shape))
+        
+        plt.subplot(121), plt.imshow(res2), plt.title("res2") 
+        gray = cv2.cvtColor(res2, cv2.COLOR_BGR2GRAY)
+        _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+        plt.subplot(122), plt.imshow(thresh, cmap='gray'), plt.title("thresh")
+        plt.show()
+        
     def houghLines(self, probabilistic=True):
         """
         Computes Hough Transforms
@@ -314,7 +338,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", help="input file path",
                         default="data/IMG_6857.JPG", required=True)
-    parser.add_argument("--debug", help="display intermediate outputs",
+    parser.add_argument("--debug", help="display intermediate outputs, requires matplotlib.pyplot",
                         action="store_true", default=False)
     args = parser.parse_args()
 
