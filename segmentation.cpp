@@ -108,7 +108,7 @@ cv::Mat Segmentation::compute_houghLines(bool doProbablistic)
     else
     {
         std::vector<cv::Vec4i> lines;
-        cv::HoughLinesP(G_edges, lines, 1, (const float)(3.14) / 2.0f, 10, 5, 3);
+        cv::HoughLinesP(G_edges, lines, 1, (const float)(3.14) / 180.0f, 10, 5, 3);
 
         for (size_t i = 0; i < lines.size(); i++)
         {
