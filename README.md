@@ -7,6 +7,18 @@ Horizontal and Vertical Plane Detection using OpenCV (HoughTransform)
 `HV_plane_detect.py` contains Source for identifying the Horizontal and Vertical Planes from the provided Image. It uses Hough Transformation Technique for identifying Horizontal and Vertical Lines.
 
 
+# C++ varient Usage and Build support
+
+All the C++ code is under cpp directory. (This is the same version of algorithm which is also implemented in Python)
+
+    $ cd cpp
+    $ mkdir build
+    $ cd build
+    $ cmake ../
+    $ make
+    $ ./testHVPlaneDetect --input ../../data/IMG_6857.jpg
+
+
 # Dependencies
 
 In order to run the particular Algo, following packages are required.
