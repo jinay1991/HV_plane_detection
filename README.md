@@ -16,7 +16,7 @@ All the C++ code is under cpp directory. (This is the same version of algorithm 
     $ cd build
     $ cmake ../
     $ make
-    $ ./testHVPlaneDetect --input ../../data/IMG_6857.jpg
+    $ ./testHVPlaneDetect ../../data/IMG_6857.JPG
 
 
 # Dependencies
